@@ -1,0 +1,35 @@
+plugins {
+    id 'base'
+    id 'maven-publish'
+}
+
+configurations.maybeCreate("default")
+//artifacts.add("default", file('idmission-litesdk-9.3.1.4.aar'))
+artifacts.default(file('idmission-litesdk-9.3.1.4.aar'))
+//publishing {
+//    publications {
+//        aar(MavenPublication) {
+//            groupId = 'com.vyyer.android'
+//            artifactId = 'custom-idmission-litesdk'
+//            version = '1.0.0'
+//        }
+//    }
+//}
+//
+
+afterEvaluate {
+    publishing {
+        publications {
+            aar(MavenPublication) {
+                groupId = 'com.vyyer.android'
+                artifactId = 'custom-idmission-litesdk'
+                version = '1.0.0'
+
+                artifact("idmission-litesdk-9.3.1.4.aar")
+            }
+        }
+    }
+}
+
+//group = "com.idmission.android"
+//version = "9.3.1.4"
